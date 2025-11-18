@@ -1,18 +1,24 @@
 .select-trigger {
-	display: inline-flex;
-	align-items: center;
-	border-radius: 6px;
-    justify-content: space-between;
-	padding: 0 15px;
-	font-size: 13px;
-	line-height: 1;
-	height: 35px;
-	gap: 5px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 10px 16px;
+	gap: 10px;
+	height: 44px;
 	background-color: white;
-	color: var(--violet-11);
-	box-shadow: none;
-    border: 1px solid #dfe3eb;
-    width: 220px;
+	color: #525D7A;
+	border: 1px solid #C2C8D6;
+	border-radius: 8px;
+	font-family: 'Objektiv Mk2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 145%;
+	width: 100%;
+	flex: 1;
+	cursor: pointer;
 }
 
 .select-content {

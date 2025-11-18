@@ -6,22 +6,68 @@ import SearchButton from "./search-button/search-button";
 import DatePicker from 'react-datepicker';
 import dayjs from 'dayjs';
 
-const SearchForm: React.FC = () => {
+interface SearchFormProps {
+    onSearch: (params: { resortId: number; groupSize: number; startDate: Date; endDate: Date }) => void;
+    isSearching?: boolean;
+}
+
+const SearchForm: React.FC<SearchFormProps> = ({ onSearch, isSearching = false }) => {
     const [skiSiteId, setSkiSiteId] = useState<number>(1);
     const [groupSize, setGroupSize] = useState<number>(1);
     const [startDate, setStartDate] = useState<Date | null>(dayjs().toDate());
     const [endDate, setEndDate] = useState<Date | null>(dayjs().add(7, 'days').toDate());
 
-    return (
-        <div className="search-form">
-            <ResortsSelect value={skiSiteId} onChange={skiSiteId => setSkiSiteId(skiSiteId)} />
-            <GuestsSelect value={groupSize} onChange={groupSize => setGroupSize(groupSize)} />
-            
-            <DatePicker className="search-form-date-picker" selected={startDate} onChange={(date) => setStartDate(date)} enableTabLoop={false} />
-            <DatePicker className="search-form-date-picker" selected={endDate} onChange={(date) => setEndDate(date)} enableTabLoop={false} />
+    const handleResortChange = (resortId: number) => {
+        setSkiSiteId(resortId);
+    };
 
-            <SearchButton />
-        </div>
+    const handleGroupSizeChange = (size: number) => {
+        setGroupSize(size);
+    };
+
+    const handleStartDateChange = (date: Date | null) => {
+        setStartDate(date);
+    };
+
+    const handleEndDateChange = (date: Date | null) => {
+        setEndDate(date);
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        if (!startDate || !endDate) {
+            return;
+        }
+
+        onSearch({
+            resortId: skiSiteId,
+            groupSize,
+            startDate,
+            endDate,
+        });
+    };
+
+    return (
+        <form className="search-form" onSubmit={handleSubmit}>
+            <ResortsSelect value={skiSiteId} onChange={handleResortChange} />
+            <GuestsSelect value={groupSize} onChange={handleGroupSizeChange} />
+            
+            <DatePicker 
+                className="search-form-date-picker" 
+                selected={startDate} 
+                onChange={handleStartDateChange} 
+                enableTabLoop={false}
+            />
+            <DatePicker 
+                className="search-form-date-picker" 
+                selected={endDate} 
+                onChange={handleEndDateChange} 
+                enableTabLoop={false}
+            />
+
+            <SearchButton disabled={isSearching} />
+        </form>
     );
 }
 

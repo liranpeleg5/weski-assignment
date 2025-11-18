@@ -1,3 +1,27 @@
+## How to Run
+
+### Backend
+
+```bash
+cd weski-api
+npm install
+npm start
+```
+
+The backend will run on `http://localhost:3001`
+
+### Frontend
+
+```bash
+cd weski-hotels-app
+npm install
+npm run dev
+```
+
+The frontend will run on `http://localhost:5173`
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

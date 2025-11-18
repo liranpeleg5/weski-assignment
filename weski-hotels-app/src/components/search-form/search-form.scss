@@ -2,17 +2,33 @@
 
 .search-form {
     display: flex;
-    gap: 12px;
-    align-items: center;
-
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    width: 100%;
+    max-width: 1002px;
+    height: 44px;
 
     .search-form-date-picker {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 10px 16px;
+        gap: 10px;
+        height: 44px;
         background: white;
-        color: black;
-        border-radius: 6px;
-        height: 35px;
-        border: 1px solid #dfe3eb;
-        padding: 0 16px;
-        width: 135px;
+        color: #525D7A;
+        border: 1px solid #C2C8D6;
+        border-radius: 8px;
+        font-family: 'Objektiv Mk2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 145%;
+        width: 100%;
+        flex: 1;
     }
 }

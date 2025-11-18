@@ -3,11 +3,16 @@ import "./nav-bar.scss";
 import WeSkiLogo from "../weski-logo/weski-logo";
 import SearchForm from "../search-form/search-form";
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+    onSearch: (params: { resortId: number; groupSize: number; startDate: Date; endDate: Date }) => void;
+    isSearching?: boolean;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ onSearch, isSearching = false }) => {
     return (
         <div className="nav-bar">
             <WeSkiLogo />
-            <SearchForm />
+            <SearchForm onSearch={onSearch} isSearching={isSearching} />
         </div>
     );
 }
